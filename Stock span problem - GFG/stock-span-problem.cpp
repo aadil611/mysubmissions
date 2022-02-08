@@ -14,9 +14,9 @@ class Solution
     {
        // Your code here
        stack<int> s;
-       vector<int> res={1};
-       s.push(0);
-       for(int i=1;i<n;i++){
+       vector<int> res;
+       
+       for(int i=0;i<n;i++){
            while((!s.empty()) && price[s.top()]<=price[i])
                 s.pop();
             int span=(s.empty())?(i+1):(i-s.top());
