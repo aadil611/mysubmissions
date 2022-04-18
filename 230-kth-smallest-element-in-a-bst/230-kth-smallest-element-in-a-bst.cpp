@@ -11,15 +11,16 @@
  */
 class Solution {
 public:
-    int nth=0,res=0;
+    int nth=0;
     int kthSmallest(TreeNode* root, int k) {
         if(!root)
             return 0;
-        kthSmallest(root->left,k);
+        int left = kthSmallest(root->left,k);
+        if(left)
+            return left;
         nth++;
         if(nth==k)
-            res= root->val;
-        kthSmallest(root->right,k);
-        return res;
+            return root->val;
+        return kthSmallest(root->right,k);
     }
 };
