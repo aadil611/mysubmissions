@@ -1,9 +1,9 @@
 class MyHashSet {
     private:
-    int v[1000001] = {0};
+    vector<bool> v;
     public:
     MyHashSet() {
-        
+        v.resize(1e6+1,false);
     }
     
     void add(int key) {
@@ -15,9 +15,7 @@ class MyHashSet {
     }
     
     bool contains(int key) {
-        if(v[key])
-            return true;
-        return false;
+        return v[key];
     }
 };
 
