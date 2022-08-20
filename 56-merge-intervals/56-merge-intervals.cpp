@@ -14,7 +14,7 @@ public:
         for(int i=1;i<n;i++){
             if(res.back()[1] < intervals[i][0])
                 res.push_back(intervals[i]);
-            else if(res.back()[1] <= intervals[i][1])
+            else if(res.back()[1] < intervals[i][1])
                 res.back()[1] = intervals[i][1];
         }
         return res;
