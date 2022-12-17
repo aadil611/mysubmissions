@@ -27,15 +27,29 @@ class Solution {
         // return helper(0,h,n,energy);
         
         // tabulation //
-        if(n <= 1)
+        // if(n <= 1)
+        //     return 0;
+        // vector<int> dp(n);
+        // dp[0]=0;
+        // dp[1]=abs(h[1] - h[0]);
+        // for(int i=2;i<n;i++){
+        //     dp[i] = min(abs(h[i] - h[i-1] ) + dp[i-1],abs(h[i] - h[i-2] ) + dp[i-2]);
+        // }
+        // return dp[n-1];
+        
+        
+        // space optimization //
+        if(n<=1)
             return 0;
-        vector<int> dp(n);
-        dp[0]=0;
-        dp[1]=abs(h[1] - h[0]);
-        for(int i=2;i<n;i++){
-            dp[i] = min(abs(h[i] - h[i-1] ) + dp[i-1],abs(h[i] - h[i-2] ) + dp[i-2]);
+        int prevprev = 0;
+        int prev = abs(h[1] - h[0]);
+        int cur = prev;
+        for(int i = 2; i < n ; i++ ){
+            cur = min(prev + abs(h[i] - h[i-1]),prevprev + abs(h[i] - h[i-2]));
+            prevprev = prev;
+            prev = cur;
         }
-        return dp[n-1];
+        return cur;
     }
 };
 
